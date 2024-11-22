@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int SCREEN_WIDTH = 1080;
     private static final int NOTE_SPEED = 10;
     private long lastUpdateTime;
+
     private int score;
 
     @Override
