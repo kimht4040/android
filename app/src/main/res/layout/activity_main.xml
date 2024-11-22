@@ -1,19 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@android:color/black">
 
+    <!-- 게임 뷰 -->
+    <com.example.myapplication.GameView
+        android:id="@+id/game_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 상단 정보 표시 레이아웃 -->
+    <LinearLayout
+        android:id="@+id/top_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#80000000">
+
+        <!-- 점수 -->
+        <TextView
+            android:id="@+id/score_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score: 0"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:layout_weight="1"/>
+
+        <!-- 콤보 -->
+        <TextView
+            android:id="@+id/combo_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Combo: 0"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <!-- 판정 결과 표시 (Perfect, Good 등) -->
     <TextView
+        android:id="@+id/judge_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/button_container"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        android:visibility="invisible"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 게임 컨트롤 버튼 컨테이너 -->
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#80000000">
+
+        <!-- 시작 버튼 -->
+        <Button
+            android:id="@+id/start_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Start"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- 일시정지 버튼 -->
+        <Button
+            android:id="@+id/pause_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Pause"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- 일시정지 메뉴 -->
+    <LinearLayout
+        android:id="@+id/pause_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#CC000000"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAUSED"
+            android:textColor="@android:color/white"
+            android:textSize="48sp"
+            android:layout_marginBottom="32dp"/>
+
+        <Button
+            android:id="@+id/resume_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Resume"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/restart_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Restart"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/quit_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Quit"/>
+    </LinearLayout>
+</RelativeLayout>
